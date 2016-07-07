@@ -1,0 +1,31 @@
+To run Unit Tests for a particualar module Magento2 
+
+1) copy \Magento2_root\dev\tests\unit\phpunit.xml.dist to \Magento2_root\dev\tests\unit\phpunit.xml
+
+2) Edit phpinit.xml for the module to be tested as below:  (Create folder Unit, under Test as shown)
+   <testsuite name="Magento Unit Tests">
+        <directory suffix="Test.php">../../../app/code/Vendor/Module/Test/Unit</directory>  
+		
+3) comment out the other directory tags inside the <testsuite> tag.
+
+4) Inside 'Unit' folder, copy the Block or Model or Helper to be tested & make changes as :
+
+  namespace Vendor\Module\Test\Unit\Block\...
+  class <className>Test extends \PHPUnit_Framework_TestCase     //suffix should be Test as given in phpinit.xml
+  {
+     public function test<functionName>()
+	 {
+		...
+	 }
+	
+  }
+  
+5) To run UnitTest
+Under Magento2 root run:
+vendor/bin/phpunit -c dev/tests/unit/phpunit.xml app/code/Vendor/Module/Test/Unit/
+
+or  
+
+php vendor/phpunit/phpunit/phpunit -c dev/tests/unit/phpunit.xml app/code/Vendor/Module/Test/Unit/
+
+To run all modules Unit tests:  php bin/magento dev:tests:run unit
