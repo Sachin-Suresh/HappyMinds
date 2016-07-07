@@ -1,0 +1,26 @@
+upload files /folders to existing repository github
+
+1) cd to the folder where you want to add the git repo
+
+2) initialize Git so you can start using Git commands inside the folder.
+
+                      git init
+
+3)  To display the state of the working directory (which changes have been staged)
+                      git status
+
+4) Add them to your local Git repository
+                      git add <file/folder_path>
+
+5) Commit the added files 
+                      git commit -m "commmit first"
+
+6) Since you haven’t connected to the GitHub repo yet, your computer doesn’t even know this exists.
+So tell your local repository about it:
+                      git remote add origin <git_url> 
+
+7) And double check to make sure it knows:
+                      git remote -v
+
+8) upload the files :
+                      git push -u origin master
