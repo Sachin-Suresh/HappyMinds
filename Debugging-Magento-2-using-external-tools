@@ -1,0 +1,24 @@
+		                Magento 2 debugging tools 
+
+1) Download & install 
+	 https://github.com/vpietri/magento2-developer-quickdevbar
+
+2) To enable magento 2 profiler + add SQL queries profiler
+	https://github.com/mirasvit/module-profiler
+
+3) Follow the installation procedure/commands listed in above github.
+
+
+
+            	Alternate way of enabling Magento2 profler
+
+	> By adding the below code to the root folder index.php
+          $_SERVER['MAGE_PROFILER']=1;
+		
+			or
+        > By adding SetEnv MAGE_PROFILER “html” to .htaccess.
+
+
+
+
+
