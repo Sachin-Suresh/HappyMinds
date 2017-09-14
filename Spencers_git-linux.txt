@@ -1,0 +1,154 @@
+Configure/access git from remote:
+
+Cloning:
+1) ssh-keygen -t rsa
+2) Enter if asked for default folder path for ssh-keygen
+3) From the Git Repo frontend (http://35.154.80.42/spencers/spencer_new), top left corner, Select Projects, and select the http://ec2-35-154-80-42.ap-south-1.compute.amazonaws.com/spencers/spencer_new.git
+4) git clone http://ec2-35-154-80-42.ap-south-1.compute.amazonaws.com/spencers/spencer_new.git
+5) Enter the user name and pass: 
+	GIT repo username: arpit.singh@rp-sg.in
+	Git Repos pass:  $pen(er.(om@123
+	
+Configure different branches:
+1) git branch    -> shows the current branch (master)
+	
+	GIT branching strategy as :
+ 
+	master : for production(http://35.154.0.159/)
+		> stage: for stage / uat     ( Stage configured http://35.154.9.53/   all changes under stage reflected on http://35.154.9.53/  )
+		> trunk: for test and dev environment (http://35.154.25.72/)
+			>feature_branches
+
+2) Create feature_branch (say eg: recipe_sachin)
+    git checkout -b <branch-name>
+	
+3) Create trunk branch:   git checkout -b trunk	
+
+	
+
+
+
+
+
+
+--------------------------------------------------------------------
+
+
+
+1)Installing Git for Linux
+sudo apt-get install git
+
+2)Configuring GitHub
+git config --global user.name "user_name"
+git config --global user.email "email_id"
+
+3)Creating a local repository
+git init Mytest
+cd Mytest
+
+4)Creating a README file to describe the repository
+sudo vim README
+	This is a git repo
+
+5)Adding repository files to an index
+Here we add all the things that need to be pushed onto the website into an index
+index=>refering to is a buffer like space that stores the files/folders that have to be added into the Git repository.
+
+sudo vim sample.c
+	
+	#include<stdio.h>
+	int main()
+	{
+		printf("hello world");
+		return 0;
+	}
+
+add it to the index by using the following 2 commands:
+
+git add README
+git add smaple.c
+
+6)Committing changes made to the index
+git commit -m "some_message"
+
+7) Creating a repository on GitHub
+
+Notice that the name of the repository should be the same as the repository's on the local system.
+In this case, it will be "Mytest".
+To do this login to your account on https://github.com. 
+Then click on the "plus(+)" symbol at the top right corner of the page and select "create new repository".
+Fill the details as shown in the image below and click on "create repository" button.
+
+git remote add origin https://github.com/Sachin-Suresh/Mytest.git
+
+8)Pushing files in local repository to GitHub repository
+git push origin master
+
+--------------------------------------------------------------
+
+SUmmary: 
+
+To push the files to github					To pull the latest changes from github
+
+sudo vim README								git fetch 					> will download the changes from the server but does not apply
+git add README								git pull origin master		> will apply them
+git commit -m "some_message"
+git push origin master
+
+Show summary of commits:		git log --oneline   or git log --graph
+Show changes:					git log -p
+Show remote details: 			git remote -v
+To get the list of all the updated, added and deleted files:    git status
+
+-------------------------------------------------------------------
+
+Before pulling make sure ou are on Master branch.
+
+To know which branch:   		git branch
+To swith to master  : 			git checkout master
+Then pull the updates:			git pull origin master (is a combination of git fetch + git merge)
+
+
+==============================================================================
+
+DEMO1:
+
+Create a repository in GitHub: GitFetchDemo
+Path in local: /var/www/html/Test_Today/GitFetchDemo
+
+
+cd /var/www/html/Test_Today 
+Test_Today   >git init GitFetchDemo
+GitFetchDemo > sudo vim fileA.txt
+			 > git add fileA.txt
+			 > git commit -m "some_message"
+			 
+			   Sync local and remote as: (name of remote: origin)
+			 > git remote add origin https://github.com/Sachin-Suresh/GitFetchDemo.git
+			 
+				Check to list available branches:
+			 > git branch -a
+			 
+			   Push this local repo to remote (master - name of the branch)
+			 > git push origin master
+			 
+				Check git hub for added fileA.txt
+				
+Sync Remote to Local:
+
+				https://www.youtube.com/watch?v=EnCe89ioCZQ
+			 
+			 
+	
+	
+
+
+
+
+
+
+
+
+
+
+

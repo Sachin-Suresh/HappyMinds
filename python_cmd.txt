@@ -1,0 +1,57 @@
+1) Ubuntu 16.04 has 'python 2.7.12' by default (python -v)
+So, to use the latest version of python, it would be better to go for creating a virtual environment ('virtualenv'). 
+		$ cd /
+		$ sudo apt-get install python3
+		$ pip install virtualenv
+		$ mkdir myPython
+		$ sudo virtualenv -p python3 MYENV    							 		 #set the path of virtualenv to the created(desired) directory-
+				or
+		$ cd myPython
+				
+		$ myPython >			     virtualenv myVirtualEnv -p python3			  # create virtualenv named myVirtualEnv for default system Python
+		$ myPython >  				 source myVirtualEnv/bin/activate		      # Activate the virtualenv
+		$(myVirtualEnv) :myPython >  python -V							 		 #Python 3.5.2
+		
+		To exit the Virtual terminal
+		$ deactivate
+
+		http://askubuntu.com/questions/244641/how-to-set-up-and-use-a-virtual-python-environment-in-ubuntu
+		
+2)	Start the python interpreter:
+		$ python3 (enter)			#>>> and Ctrl+z to terminate
+
+3) Intendation programming rules:
+			# import this    #Zen of python
+
+			#Spaces (4) used rather than {}
+			# To termainate a loop,=>Blank line
+			
+4) break keyword: breaks the control of the innermost loop and the lst statement immediately following the loop			
+
+======================================================================================================================
+		
+ -> Auto intend python file:
+ 
+ pip install autopep8
+ autopep8 <file.py> --in-place
+ 
+ -> Install mysql to connect from python:
+ 
+ apt install build-essential
+ apt install libmysqlclient-dev
+ pip install mysqlclient
+ 
+ -> Install SQLAlchemy in python:
+ 
+ pip install flask-mysql
+ pip install Flask-SQLAlchemy 
+ 
+ -> apt-get install python-pip
+pip install flask     			#will first install Flask framework:
+apt-get install python-mysqldb
+pip install flask-restful
+ 
+ 
+ 		
+
+	

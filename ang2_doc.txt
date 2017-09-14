@@ -1,0 +1,29 @@
+Prerequistes
+
+Ubuntu 16.04.01 LTS
+Java v1.8.0_101 (command: java -version)
+Nodejs v4.2.6 (command: node -v)
+npm v3.5.2 (command: npm -v)
+ng v1.0.0-beta.10 (command: ng version)
+Eclipse J2EE Neon
+Augury v1.0.5
+
+sudo apt-get install nodejs npm
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+sudo npm install -g angular-cli    (ng version)
+
+
+
+1)mkdir Demo   or  ng new Demo  (This creates a new directory with all files you need)
+	cd Demo
+	clone git clone https://github.com/gokulkrishh/angular-2-quick-start
+	npm install
+	ng serve --host 10.22.1.168
+
+or  
+
+npm install lite-server --save-dev
+
+
+
+http://fcorti.com/2016/08/22/angular-2-eclipse-how-to/

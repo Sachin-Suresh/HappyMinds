@@ -1,0 +1,70 @@
+				Dump single table from DB
+
+If you're in local machine then use this command
+
+/usr/local/mysql/bin/mysqldump -h127.0.0.1 --port = 3306 -u [username] -p [password] --databases [db_name] --tables [tablename] > /to/path/tablename.sql;
+
+For remote machine, use below one
+
+/usr/local/mysql/bin/mysqldump -h [remoteip] --port = 3306 -u [username] -p [password] --databases [db_name] --tables [tablename] > /to/path/tablename.sql;
+
+..............................................................................................................................................................................
+
+				You should allow remote access to mysql from command line inside your virtual machine
+				
+(assuming you don't have any gui tools to connect to mysql like phpmyadmin and mysql-workbench)
+
+    1) As root, open your /etc/mysql/my.cnf with your favorite editor.
+	
+    2) look for the [mysqld] section, and in there for the bind-address keyword. This usually is set to 127.0.0.1 -- change that to match your "normal" IP-address
+		ie) the IP which you want to access to MSQL.
+		
+    3) save the file, and reload the service (e.g. using service mysql restart)
+
+Remember you must enable your remote users to access their database(s) from remote, by setting the appropriate GRANTs -- e.g.
+
+	4) GRANT ALL PRIVILEGES ON <databasename> TO 'root'@'%' IDENTIFIED BY 'mysqlpassword' WITH GRANT OPTION;
+	  GRANT ALL ON DB_NAME.* TO 'USER'@'HOST' IDENTIFIED BY 'PASSWORD' WITH GRANT OPTION;
+	   FLUSH PRIVILEGES;
+	   
+Note the @'%', which means "from any host".
+
+..............................................................................................................................................................................
+
+						Bckup single table mysql
+						
+mysqldump -u root -h 10.22.1.168 -p magento19 spen_recipe> /home/administrator/DB_backups/spen_recipe_bckup.sql
+
+						backup table with multiple insert statements
+
+mysqldump -u root -p radiolocous --routines  --extended-insert=FALSE > /var/www/html/RADIOLOCOUS/GMR/20_3_17dump.sql
+					
+
+..............................................................................................................................................................................
+
+Downgrade php 7 to 5.6
+
+http://geekdecoder.com/ubuntu-16-04-xenial-downgrade-php-7-php-5-6/
+
+
+...............................
+
+Remote host to remote scp command
+
+1) open destinations putty 
+2) scp -pr <user_name>@<host_name>:/path/to/source_files /destination/path
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+how to fix missing gpg keys Pubic keys error:
+
+sudo apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys <paste-ur-publickey >
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Free up home directory space :
+
+Lists all kernels:       dpkg -l | grep -G "linux.*image.*" -h
+Remove the old kernels:  sudo dpkg -P linux-image{-extra}-4.4.0-{37,57,62,63}-generic

@@ -1,0 +1,40 @@
+To get the bearer token:
+
+1) Create a user role and a user in admin
+
+2) To get bearer token :
+	curl -X POST "http://10.22.1.168/Mage_ang2/index.php/rest/V1/integration/admin/token" -H "Content-Type: application/json" -d '{"username":"admin","password": "happy@123"}'
+	curl -X POST "http://10.22.1.168/Mage_ang2/index.php/rest/V1/integration/customer/token" -H "Content-Type: application/json" -d '{"username":"apiuser","password": "happy@123"}'
+  
+  Check in Rest app:
+   curl -X GET --header "Accept: application/json" --header "Authorization: Bearer x9a278mu7xoh4k0jkj08doc5j4b3ac22" "http://10.22.1.168/Mage_ang2/index.php/rest/V1/customers/1"
+
+Bearer:    15yfn1lteexy8mqgrwcq5figgwoj1aai
+		   j9dtvdfuv9yis9idw4wiyu26l8necd2y
+		   x9a278mu7xoh4k0jkj08doc5j4b3ac22
+		   
+		   ntthnrbj1uam2tuv1ekva7n18mcnkby3
+---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+curl -X GET -H "Authorization: Bearer 15yfn1lteexy8mqgrwcq5figgwoj1aai" "http://10.22.1.168/Mage_ang2/index.php/rest/V1/integration/admin/token" 
+
+http://10.22.1.168/Mage_ang2/index.php/rest/V1/customers/me?Authorization=Bearer 15yfn1lteexy8mqgrwcq5figgwoj1aai
+
+
+
+GET:       http://10.22.1.168/Mage_ang2/index.php/rest/V1/categories
+
+

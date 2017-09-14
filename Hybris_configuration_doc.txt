@@ -1,0 +1,38 @@
+		To enable HMC and other cockpits
+
+1) add appropriate extension in xml
+
+2) reload ant and ant clean all
+
+
+3) localhost:9001/mcc/index.zul
+
+
+from above we can naviagte to hmc
+---------------------
+
+		Hybris with mysql
+As we know that hybris suite by default provides HSQL database, 
+so if we want to connect to MySQL database we need to do the following modifications:
+
+in \hybris\bin\platform\project.properties
+Comment the Database settings for HSQLDB
+uncomment MYSQL settings 
+
+Since hybris Commerce Suite version 5.0.2, MySQL connector is not shipped with the hybris Commerce Suite, 
+Hence download the below mysql java connector:
+MYSQL java connector link (https://mega.nz/#!BQYXGSIS!NXTu2tIQWbY5QnLiVrpj0Y5tNCTMql3ZcrufA5nQjmQ)
+
+(With MySQL 5.6.4 (or later) the mysql.allow.fractional.seconds property must be defined. 
+Before 5.6.4 you must either omit the mysql.allow.fractional.seconds property or 
+set it for false! In project.properties file )
+
+and place it in hybris/bin/platform/lib/dbdriver
+and reload/build ant
+
+Initialize the system in HAC
+
+
+
+
+

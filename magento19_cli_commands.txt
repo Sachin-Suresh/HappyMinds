@@ -1,0 +1,24 @@
+Magento19 admin login cred:
+user: admin
+pass: happy@123
+-----------------------------
+
+1) To clear index in CLI (rootfolder/shell)
+
+	php indexer.php --status
+	php indexer.php info
+	nohup php indexer.php --reindex catalog_product_price
+	php -f indexer.php reindexall
+	
+			or
+	$indexer = Mage::getModel('index/indexer')->getProcessByCode('some_indexer_code_given_above')
+    $indexer->reindexEverything();
+	
+	     or
+		
+	php -f clearIndexes.php
+	
+2) Clear cache from script: (Refer clearCache.php file in root folder)
+      
+	php -f clearCache.php
+	

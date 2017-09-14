@@ -1,0 +1,113 @@
+php bin/magento setup:static-content:deploy
+php bin/magento setup:db:status   -- To check the status of all modules
+php bin/magento setup:upgrade
+php bin/magento indexer:reindex
+php bin/magento cache:flush   
+rm -rf var/cache/*
+rm -rf pub/static/*; rm -rf var/view_preprocessed/*;
+php bin/magento deploy:mode:show
+php bin/magento deploy:mode:set developer
+php bin/magento setup:di:compile Package_Module
+php -f bin/magento module:enable --clear-static-content Package_Module
+php bin/magento --version
+
+php bin/magento sampledata:deploy   -- download the sample data
+php bin/magento setup:upgrade       -- then install the sample data
+
+php bin/magento admin:user:unlock admin
+php bin/magento setup:config:set --backend-frontname="admin_path"
+   or 
+
+UPDATE admin_user SET password = CONCAT(SHA2('xxxxxxxxhappy@123', 256), ':xxxxxxxx:1') WHERE username = 'admin';
+
+To upgrade all password_hash using md5() to sha256():
+		php -f bin/magento customer:hash:upgrade
+
+sudo service xrdp status
+
+http://localhost:1338/magento2x_3/soap/default?wsdl&services=
+
+http://localhost:1338/magento2x_5test/rest/<route url path>
+
+http://localhost:1338/magento2x_5test/rest/V1/sync/get
+http://localhost:1338/magento2x_5test/rest/V1/sync/get/sku/OUTIPCAM13
+http://localhost:1338/magento2x_5test/rest/V1/sync/get/pagelimit/3/15
+http://localhost:1338/magento2x_5test/rest/V1/sync/get/updateCount
+
+
+merchandisingpage/result/index/product/test
+
+
+ngrok url format:
+
+->  http://03860cb7.ngrok.io/magento2x_6/
+--> change in core_config_data and
+in env.php change 'host' => 'http://03860cb7.ngrok.io/
+
+--> Clear cache
+
+------------------------------------------------
+
+Mage1 dshboard:  http://staging-dashboard.tagalys.com/happiest-minds-magento-1-dot-x/demo/search?q=camera&f=%7B%7D&sort=67
+
+Mage2 dashboard: http://staging-dashboard.tagalys.com/happiest-minds-magento-2-dot-0/demo/search?q=wireless&tgls-feature=text-search 
+
+
+Server:           http://staging-api.tagalys.com/
+Api key for 1.x : ce0mmxwdipcjsldj34
+Api key for 2.0 : fhdhw8ch37fget6fy37dudgdy28dhd
+
+
+Hangout Link :  https://hangouts.google.com/hangouts/_/txxhykzxhfgdxcxsrcw25mvpzee
+
+
+			Git cmds
+
+git init
+
+git add <file/folder_path>
+
+git commit -m "commmit first"
+
+git remote add origin <git_url> 
+
+upload git push -u origin master
+
+http://hangouts.google.com/start
+
+
+BUG posts:
+
+checkout:
+https://github.com/magento/magento2/issues/4921
+
+-----------------------------
+
+
+10.20.22.152
+user: boltcms
+pass: welcome1
+
+linux ubuntu magento2
+boltcms vm
+
+10.20.22.152
+user: admin
+pass: happy@123
+
+
+New VM Login:
+
+10.22.1.168
+root
+HM@Smiles@123
+
+SQL- H@ppiest@123
+
+URL: http://tagalys.happiestminds.com/magento2
+
+
+VPN:
+
+happy
+happy@123

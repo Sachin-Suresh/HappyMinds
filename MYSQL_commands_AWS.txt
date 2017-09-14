@@ -1,0 +1,83 @@
+SPENCERS AWS RD :
+
+MYSQL version		: 5.6.23 
+DB instance 		: meragrocer-kolkata
+DB name 		 	: meragrocer
+End point			: meragrocer-kolkata.cyip2uberwvo.ap-southeast-1.rds.amazonaws.com
+Master user name	: root
+Port				: 3306
+
+Security grp link:  https://console.aws.amazon.com/ec2/home#s=SecurityGroups
+Existing security grp id: sg-0d1f2768
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+			Reset admin password magento 1.9 and older
+
+UPDATE admin_user SET password = CONCAT(MD5('xxhappy@123'), ':xx') WHERE username = 'ADMIN';
+
+			Format mysql output format in SSH terminal
+			
+mysql>  pager less -SFX
+
+Leave this view by hitting the q key, which will quit the less too
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+				Dump single table from DB
+
+If you're in local machine then use this command
+
+/usr/local/mysql/bin/mysqldump -h127.0.0.1 --port = 3306 -u [username] -p [password] --databases [db_name] --tables [tablename] > /to/path/tablename.sql;
+
+			For remote machine, use below one
+
+/usr/local/mysql/bin/mysqldump -h [remoteip] --port = 3306 -u [username] -p [password] --databases [db_name] --tables [tablename] > /to/path/tablename.sql;
+
+			MySQLDump one INSERT statement for each data row
+			
+mysqldump -u root -p DBnamw --routines --extended-insert=FALSE  > /var/www/html/dump.sql
+
+
+
+				Count number of tables in DB
+				
+SELECT count(*) AS totalTables
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = 'spencer_dev'
+..............................................................................................................................................................................
+
+				You should allow remote access to mysql from command line inside your virtual machine
+				
+(assuming you don't have any gui tools to connect to mysql like phpmyadmin and mysql-workbench)
+
+    1) As root, open your /etc/mysql/my.cnf with your favorite editor.
+	
+    2) look for the [mysqld] section, and in there for the bind-address keyword. This usually is set to 127.0.0.1 -- change that to match your "normal" IP-address
+		ie) the IP which you want to access to MSQL.
+		
+    3) save the file, and reload the service (e.g. using service mysql restart)
+
+Remember you must enable your remote users to access their database(s) from remote, by setting the appropriate GRANTs -- e.g.
+
+	4) GRANT ALL PRIVILEGES ON <databasename> TO 'root'@'%' IDENTIFIED BY 'mysqlpassword' WITH GRANT OPTION;
+	   FLUSH PRIVILEGES;
+	   
+	   //Grant permission to all tables in a DB
+	   GRANT ALL PRIVILEGES ON <databasename>.* TO 'root'@'%' IDENTIFIED BY 'mysqlpassword' WITH GRANT OPTION;
+	   
+	   SHOW GRANTS FOR 'username'@'%'
+	   
+Note the @'%', which means "from any host".
+
+..............................................................................................................................................................................
+
+						Bckup single table mysql
+						
+mysqldump -u root -h 10.22.1.168 -p magento19 spen_recipe> /home/administrator/DB_backups/spen_recipe_bckup.sql
+
+..............................................................................................................................................................................
+
+			Get the Name of the VM Instance and other details:
+
+lsb_release -a
+cat /etc/os-release
+
+---------------------------------------------------------------
+

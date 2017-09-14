@@ -1,0 +1,106 @@
+Configuring angluar 1 in Ubuntu
+
+1) Install nodejs
+	apt-get install nodejs
+	apt-get install npm
+
+2) Set up env for angular 1
+
+	a) Req tools:
+		*Yeoman angular generator
+		*Grunt and  Bower
+		
+		Yo is used to generate things, from other generators to files and more.
+		Bower is used for dependency management, downloading and installing .js components.
+		Grunt is used for task management such as building, previewing and testing.
+		
+		*Yeoman:(Scafolding system for any language)
+			First thing is to install yo using npm:
+				npm install -g yo                     -> /usr/local/lib/node_modules/yo
+														(If "Failed at the spawn-sync@1.0.15 postinstall script 'node postinstall'" error,
+														TRY: 
+															sudo apt-get install nodejs-legacy)
+													 -> EACESS erro: https://docs.npmjs.com/getting-started/fixing-npm-permissions
+																	OR
+														TRY: chmod g+rwx /root /root/.config /root/.config/
+				
+			Then install the needed generator(generator-XYZ) 
+				npm install -g generator-angular        -> creates the initial project structure, folders etc.
+				
+		* GRUNT:
+			What’s Grunt used for? 
+				Automating front-end and JavaScript workflow tasks.
+				Refreshing the browser when you change a script.
+				Minifying and concatenating. 
+				Running tests. 
+		
+		Install grunt (grunt --version)
+			npm install -g grunt-cli     	->This will put the grunt command in your system path, allowing it to be run from any directory.
+			npm install grunt --save-dev	->To install the latest version of Grunt in your project folder, adding it to your devDependencies:
+
+								Eg: for installing the JSHint task module:
+									npm install grunt-contrib-jshint --save-dev
+									npm install --save-dev time-grunt
+									npm install --save-dev jshint-stylish
+									npm install --save-dev autoprefixer-core
+									npm install -g npm-install-missing
+									npm install -g bower grunt
+									npm install karma --save-dev
+		
+		Start Grunt:
+			First > npm install
+			Then > grunt test
+				>grunt serve	
+				
+			Issues post grunt serve command   https://www.addwebsolution.com/blog/create-angularjs-app-yeoman-grunt-and-bower
+				> For bower issue use below command
+				>sudo apt-get install ruby
+				 sudo apt-get install ruby-compass
+				 sudo gem install compass
+				 
+				 Optional:
+				 sudo gem install sass --pre  (sass --version)
+				 gem update sass  
+			
+		Install bower in root folder
+			bower install --allow-root
+			
+		
+		
+3) Create app scafolding
+	mkdir myApp && cd myApp
+	yo angular								->The command will ask for many options.  (If everything is successful then you will see Gruntfile.js, app/, bower_components/, bower.json, node_modules, test/.)
+	
+	NOTE: 
+	In bower.json change name and moduleName
+	Also set the same name in app/scripts/app.js at angular.module('{name}')and in app/views/index.html at ng-app="{name}".
+	
+	The Module: /app/scripts/app.js
+	The Controller: /app/scripts/controllers/main.js
+	The View: app/views/main.html
+	
+	
+4) Add contollers and modules
+	yo angular:controller/service {controller_name}   -->To add controllers/services
+	bower install --save {module name}       			->To add angular modules
+	
+					
+	
+5) To start the server with yoeman and grunt
+		Use : npm run serve
+		Dont use : npm start
+	
+			-> We may need to install lite-server
+				https://www.npmjs.com/package/lite-server
+			
+			-> if missing start script error:
+				add
+				"scripts": {
+						"start": "lite-server"
+				},   in package.json
+			
+
+
+
+
+		
